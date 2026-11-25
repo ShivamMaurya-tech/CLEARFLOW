@@ -1,0 +1,3537 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ClearFlow — One Clear, Fast, Affordable Workflow</title>
+    <meta
+      name="description"
+      content="Stop wasting hours on slow workflows, unclear pricing, and chasing updates. ClearFlow brings your scattered tools into one clear, fast, and affordable workflow."
+    />
+
+    <!-- Google Font: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "system-ui", "-apple-system", "sans-serif"],
+            },
+            colors: {
+              slate: {
+                900: "#0F172A",
+                50: "#F8FAFC",
+              },
+              brand: {
+                blue: "#2563EB",
+                emerald: "#10B981",
+              },
+            },
+            boxShadow: {
+              soft: "0 10px 35px -10px rgba(15, 23, 42, 0.08)",
+              card: "0 4px 20px -2px rgba(15, 23, 42, 0.06)",
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- Minimal custom polish for range sliders and smooth fade animations -->
+    <style>
+      body {
+        font-family:
+          "Inter",
+          system-ui,
+          -apple-system,
+          sans-serif;
+        color: #0f172a;
+        background-color: #ffffff;
+        overflow-x: hidden;
+      }
+
+      /* Custom accessible range slider styling */
+      input[type="range"].cf-slider {
+        -webkit-appearance: none;
+        appearance: none;
+        height: 8px;
+        border-radius: 9999px;
+        background: #e2e8f0;
+        outline: none;
+      }
+      input[type="range"].cf-slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 22px;
+        height: 22px;
+        border-radius: 9999px;
+        background: #2563eb;
+        border: 3px solid #ffffff;
+        box-shadow: 0 2px 8px rgba(37, 99, 235, 0.4);
+        cursor: pointer;
+        transition:
+          transform 0.15s ease,
+          background-color 0.15s ease;
+      }
+      input[type="range"].cf-slider::-webkit-slider-thumb:hover {
+        transform: scale(1.1);
+        background: #1d4ed8;
+      }
+      input[type="range"].cf-slider::-moz-range-thumb {
+        width: 22px;
+        height: 22px;
+        border-radius: 9999px;
+        background: #2563eb;
+        border: 3px solid #ffffff;
+        box-shadow: 0 2px 8px rgba(37, 99, 235, 0.4);
+        cursor: pointer;
+      }
+
+      /* Subtle panel transition */
+      @keyframes fadeSlideUp {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .animate-fade-slide {
+        animation: fadeSlideUp 0.28s ease-out forwards;
+      }
+    </style>
+  </head>
+  <body
+    class="antialiased text-slate-900 bg-white selection:bg-blue-100 selection:text-blue-900"
+  >
+    <!-- ==================== 1. STICKY NAVIGATION BAR ==================== -->
+    <header
+      class="sticky top-0 z-40 w-full bg-white/90 backdrop-blur-md border-b border-slate-200/80 transition-all"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16 md:h-20">
+          <!-- Brand Logo -->
+          <a
+            href="#"
+            class="flex items-center gap-2.5 group focus:outline-none"
+          >
+            <div
+              class="w-9 h-9 rounded-xl bg-slate-900 flex items-center justify-center shadow-sm group-hover:bg-blue-600 transition-colors"
+            >
+              <!-- Minimalist Geometric Flow SVG Icon -->
+              <svg
+                class="w-5 h-5 text-white"
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden="true"
+              >
+                <rect
+                  x="3"
+                  y="4"
+                  width="11"
+                  height="4.5"
+                  rx="2.25"
+                  fill="currentColor"
+                />
+                <rect
+                  x="3"
+                  y="10"
+                  width="18"
+                  height="4.5"
+                  rx="2.25"
+                  fill="#10B981"
+                />
+                <rect
+                  x="9"
+                  y="16"
+                  width="12"
+                  height="4.5"
+                  rx="2.25"
+                  fill="currentColor"
+                />
+              </svg>
+            </div>
+            <span class="text-xl font-extrabold tracking-tight text-slate-900"
+              >Clear<span class="text-blue-600">Flow</span></span
+            >
+          </a>
+
+          <!-- Desktop Navigation Links -->
+          <nav
+            class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-600"
+            aria-label="Main Navigation"
+          >
+            <a
+              href="#problem-solution"
+              class="hover:text-slate-900 transition-colors"
+              >Problem &amp; Solution</a
+            >
+            <a
+              href="#how-it-works"
+              class="hover:text-slate-900 transition-colors"
+              >How It Works</a
+            >
+            <a href="#features" class="hover:text-slate-900 transition-colors"
+              >Features</a
+            >
+            <a href="#pricing" class="hover:text-slate-900 transition-colors"
+              >Pricing</a
+            >
+            <a href="#contact" class="hover:text-slate-900 transition-colors"
+              >Contact</a
+            >
+          </nav>
+
+          <!-- Desktop Primary CTA & Mobile Hamburger -->
+          <div class="flex items-center gap-3">
+            <button
+              type="button"
+              data-open-booking
+              class="hidden sm:inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 active:scale-[0.98] text-white text-sm font-semibold shadow-sm shadow-blue-600/20 transition-all cursor-pointer"
+            >
+              <span>Book 10-Min Walkthrough</span>
+              <svg
+                class="w-4 h-4"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M5 12h14M13 5l7 7-7 7" />
+              </svg>
+            </button>
+
+            <!-- Mobile Menu Button -->
+            <button
+              id="mobileMenuBtn"
+              type="button"
+              aria-label="Toggle Menu"
+              aria-expanded="false"
+              class="md:hidden inline-flex items-center justify-center p-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors"
+            >
+              <svg
+                id="menuIconOpen"
+                class="w-6 h-6"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <line x1="4" y1="6" x2="20" y2="6" />
+                <line x1="4" y1="12" x2="20" y2="12" />
+                <line x1="4" y1="18" x2="20" y2="18" />
+              </svg>
+              <svg
+                id="menuIconClose"
+                class="w-6 h-6 hidden"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Dropdown Navigation -->
+      <div
+        id="mobileMenu"
+        class="hidden md:hidden border-t border-slate-200 bg-white px-4 pt-3 pb-5 shadow-lg"
+      >
+        <div class="flex flex-col space-y-1">
+          <a
+            href="#problem-solution"
+            class="mobile-nav-link px-3 py-2.5 rounded-xl text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-slate-900"
+            >Problem &amp; Solution</a
+          >
+          <a
+            href="#how-it-works"
+            class="mobile-nav-link px-3 py-2.5 rounded-xl text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-slate-900"
+            >How It Works</a
+          >
+          <a
+            href="#features"
+            class="mobile-nav-link px-3 py-2.5 rounded-xl text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-slate-900"
+            >Features</a
+          >
+          <a
+            href="#pricing"
+            class="mobile-nav-link px-3 py-2.5 rounded-xl text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-slate-900"
+            >Pricing</a
+          >
+          <a
+            href="#contact"
+            class="mobile-nav-link px-3 py-2.5 rounded-xl text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-slate-900"
+            >Contact</a
+          >
+        </div>
+        <div class="mt-4 pt-4 border-t border-slate-100">
+          <button
+            type="button"
+            data-open-booking
+            class="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold shadow-sm transition-colors"
+          >
+            Book 10-Min Walkthrough
+            <svg
+              class="w-4 h-4"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M5 12h14M13 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- ==================== 2. HERO SECTION (UVP + INTERACTIVE PREVIEW) ==================== -->
+      <section
+        id="problem-solution"
+        class="relative overflow-hidden bg-gradient-to-b from-slate-50 via-white to-white pt-12 pb-20 lg:pt-20 lg:pb-28 scroll-mt-20"
+      >
+        <!-- Subtle decorative background glow -->
+        <div
+          class="pointer-events-none absolute -top-24 right-0 w-[500px] h-[500px] rounded-full bg-blue-50/70 blur-3xl opacity-70"
+          aria-hidden="true"
+        ></div>
+        <div
+          class="pointer-events-none absolute top-40 -left-24 w-[400px] h-[400px] rounded-full bg-emerald-50/60 blur-3xl opacity-70"
+          aria-hidden="true"
+        ></div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div
+            class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center"
+          >
+            <!-- Left Column: Unique Value Proposition -->
+            <div class="lg:col-span-6 space-y-7">
+              <!-- Eyebrow Badge -->
+              <div
+                class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200/80 text-emerald-800 text-xs sm:text-sm font-semibold"
+              >
+                <span class="relative flex h-2.5 w-2.5">
+                  <span
+                    class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"
+                  ></span>
+                  <span
+                    class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"
+                  ></span>
+                </span>
+                Built for growing businesses — save time &amp; money from day
+                one
+              </div>
+
+              <!-- Headline -->
+              <h1
+                class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 leading-[1.12]"
+              >
+                Stop wasting hours on slow workflows, unclear pricing, and
+                chasing updates.
+              </h1>
+
+              <!-- Subheadline -->
+              <p
+                class="text-base sm:text-lg text-slate-600 leading-relaxed max-w-xl"
+              >
+                Bring your scattered tools into one clear, fast, and affordable
+                workflow. Get transparent pricing, smoother execution, and
+                dependable support built around how you actually work.
+              </p>
+
+              <!-- Dual Call-To-Action Buttons -->
+              <div
+                class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-1"
+              >
+                <button
+                  type="button"
+                  data-open-booking
+                  class="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-700 active:scale-[0.98] text-white font-semibold text-base shadow-md shadow-blue-600/25 transition-all cursor-pointer"
+                >
+                  <svg
+                    class="w-5 h-5"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                    <line x1="16" y1="2" x2="16" y2="6" />
+                    <line x1="8" y1="2" x2="8" y2="6" />
+                    <line x1="3" y1="10" x2="21" y2="10" />
+                  </svg>
+                  Book a 10-Min Walkthrough
+                </button>
+
+                <a
+                  href="#how-it-works"
+                  class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-slate-800 font-semibold text-base shadow-sm transition-all"
+                >
+                  <svg
+                    class="w-5 h-5 text-blue-600"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <polygon
+                      points="10 8 16 12 10 16 10 8"
+                      fill="currentColor"
+                      stroke="none"
+                    />
+                  </svg>
+                  See How It Works
+                </a>
+              </div>
+
+              <!-- Social Proof Strip -->
+              <div
+                class="pt-4 border-t border-slate-200/80 flex flex-col sm:flex-row sm:items-center gap-3.5"
+              >
+                <!-- Crisp SVG Monogram Avatars -->
+                <div class="flex -space-x-2.5 shrink-0" aria-hidden="true">
+                  <div
+                    class="w-9 h-9 rounded-full bg-blue-600 text-white text-xs font-bold flex items-center justify-center ring-2 ring-white"
+                  >
+                    ML
+                  </div>
+                  <div
+                    class="w-9 h-9 rounded-full bg-emerald-600 text-white text-xs font-bold flex items-center justify-center ring-2 ring-white"
+                  >
+                    DO
+                  </div>
+                  <div
+                    class="w-9 h-9 rounded-full bg-slate-800 text-white text-xs font-bold flex items-center justify-center ring-2 ring-white"
+                  >
+                    RT
+                  </div>
+                  <div
+                    class="w-9 h-9 rounded-full bg-indigo-500 text-white text-xs font-bold flex items-center justify-center ring-2 ring-white"
+                  >
+                    +40
+                  </div>
+                </div>
+                <p class="text-sm text-slate-600 leading-snug">
+                  <span class="font-semibold text-slate-900"
+                    >Early users are cutting delays by up to 60%</span
+                  >
+                  and making faster decisions with less effort.
+                </p>
+              </div>
+            </div>
+
+            <!-- Right Column: Interactive Before / After Workspace Comparison Card -->
+            <div class="lg:col-span-6">
+              <div
+                class="bg-white rounded-2xl border border-slate-200/90 shadow-soft p-4 sm:p-6 relative"
+              >
+                <!-- Interactive Toggle Header -->
+                <div
+                  class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 mb-5 border-b border-slate-100"
+                >
+                  <div>
+                    <span
+                      class="text-xs font-semibold uppercase tracking-wider text-slate-400"
+                      >Interactive Workspace View</span
+                    >
+                    <h2 class="text-sm font-bold text-slate-900 mt-0.5">
+                      Compare Chaos vs. Clarity
+                    </h2>
+                  </div>
+
+                  <!-- Segmented Control Toggle -->
+                  <div
+                    class="inline-flex p-1 rounded-xl bg-slate-100 border border-slate-200/70 self-start sm:self-auto"
+                    role="tablist"
+                    aria-label="Workflow comparison toggle"
+                  >
+                    <button
+                      id="btnBefore"
+                      type="button"
+                      role="tab"
+                      aria-selected="false"
+                      class="px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 transition-all cursor-pointer"
+                    >
+                      Before: Scattered Tools
+                    </button>
+                    <button
+                      id="btnAfter"
+                      type="button"
+                      role="tab"
+                      aria-selected="true"
+                      class="px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-white text-blue-700 shadow-sm ring-1 ring-slate-200/80 transition-all cursor-pointer"
+                    >
+                      After: ClearFlow
+                    </button>
+                  </div>
+                </div>
+
+                <!-- ========== VIEW A: AFTER (CLEARFLOW UNIFIED WORKSPACE) ========== -->
+                <div id="viewAfter" class="space-y-4 animate-fade-slide">
+                  <!-- Workspace Status Bar -->
+                  <div
+                    class="flex flex-wrap items-center justify-between gap-2 bg-slate-50 rounded-xl px-4 py-3 border border-slate-200/70"
+                  >
+                    <div class="flex items-center gap-2.5">
+                      <span
+                        class="w-2.5 h-2.5 rounded-full bg-emerald-500"
+                      ></span>
+                      <span class="text-sm font-bold text-slate-900"
+                        >Unified Workspace</span
+                      >
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <span
+                        class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-semibold"
+                      >
+                        <svg
+                          class="w-3.5 h-3.5"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                        All Updates On Track
+                      </span>
+                    </div>
+                  </div>
+
+                  <!-- Live Workflow Stream -->
+                  <div class="space-y-2.5">
+                    <!-- Item 1 -->
+                    <div
+                      class="flex items-center justify-between gap-3 p-3.5 rounded-xl bg-white border border-slate-200/80 hover:border-blue-200 transition-colors"
+                    >
+                      <div class="flex items-center gap-3 min-w-0">
+                        <div
+                          class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0"
+                        >
+                          <svg
+                            class="w-4 h-4"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          >
+                            <polyline points="20 6 9 17 4 12" />
+                          </svg>
+                        </div>
+                        <div class="truncate">
+                          <p
+                            class="text-sm font-semibold text-slate-900 truncate"
+                          >
+                            Client Onboarding &amp; Scope Sign-Off
+                          </p>
+                          <p class="text-xs text-slate-500">
+                            Approved in 1 click • Synced across team
+                          </p>
+                        </div>
+                      </div>
+                      <span
+                        class="shrink-0 px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-700 text-xs font-semibold"
+                        >Done</span
+                      >
+                    </div>
+
+                    <!-- Item 2: Automated Follow-Up Badge -->
+                    <div
+                      class="flex items-center justify-between gap-3 p-3.5 rounded-xl bg-blue-50/40 border border-blue-200/80"
+                    >
+                      <div class="flex items-center gap-3 min-w-0">
+                        <div
+                          class="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center shrink-0"
+                        >
+                          <svg
+                            class="w-4 h-4"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2.2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          >
+                            <polygon
+                              points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"
+                            />
+                          </svg>
+                        </div>
+                        <div class="truncate">
+                          <p
+                            class="text-sm font-semibold text-slate-900 truncate"
+                          >
+                            Q4 Proposal Review — Acme Corp
+                          </p>
+                          <p class="text-xs text-blue-700 font-medium">
+                            Smart reminder delivered • Zero chasing
+                          </p>
+                        </div>
+                      </div>
+                      <span
+                        class="shrink-0 inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-blue-600 text-white text-xs font-semibold"
+                      >
+                        Auto Follow-Up
+                      </span>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div
+                      class="flex items-center justify-between gap-3 p-3.5 rounded-xl bg-white border border-slate-200/80"
+                    >
+                      <div class="flex items-center gap-3 min-w-0">
+                        <div
+                          class="w-8 h-8 rounded-lg bg-slate-100 text-slate-700 flex items-center justify-center shrink-0"
+                        >
+                          <svg
+                            class="w-4 h-4"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          >
+                            <path
+                              d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                            />
+                          </svg>
+                        </div>
+                        <div class="truncate">
+                          <p
+                            class="text-sm font-semibold text-slate-900 truncate"
+                          >
+                            Human Support Desk
+                          </p>
+                          <p class="text-xs text-slate-500">
+                            Live specialist replied in 14 mins
+                          </p>
+                        </div>
+                      </div>
+                      <span
+                        class="shrink-0 px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 text-xs font-semibold"
+                        >Resolved</span
+                      >
+                    </div>
+                  </div>
+
+                  <!-- Transparent Cost Breakdown Widget -->
+                  <div
+                    class="rounded-xl bg-slate-900 text-white p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4"
+                  >
+                    <div>
+                      <div class="flex items-center gap-2">
+                        <span
+                          class="text-xs font-semibold uppercase tracking-wider text-emerald-400"
+                          >Transparent Cost Breakdown</span
+                        >
+                        <span
+                          class="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-[11px] font-semibold"
+                          >$0 Hidden Fees</span
+                        >
+                      </div>
+                      <div class="flex items-baseline gap-2 mt-1">
+                        <span class="text-2xl font-extrabold">$79</span>
+                        <span class="text-xs text-slate-400"
+                          >/ month flat — all workflow tools included</span
+                        >
+                      </div>
+                    </div>
+                    <div
+                      class="flex items-center gap-3 sm:text-right border-t sm:border-t-0 pt-3 sm:pt-0 border-slate-800"
+                    >
+                      <div>
+                        <p class="text-xs text-slate-400">Monthly Savings</p>
+                        <p class="text-sm font-bold text-emerald-400">
+                          -$233/mo + 11 hrs
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- ========== VIEW B: BEFORE (SCATTERED TOOLS CHAOS) ========== -->
+                <div
+                  id="viewBefore"
+                  class="hidden space-y-4 animate-fade-slide"
+                >
+                  <!-- Warning Status Bar -->
+                  <div
+                    class="flex flex-wrap items-center justify-between gap-2 bg-rose-50 rounded-xl px-4 py-3 border border-rose-200/80"
+                  >
+                    <div class="flex items-center gap-2.5">
+                      <span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
+                      <span class="text-sm font-bold text-rose-950"
+                        >5 Disconnected Tools + Spreadsheets</span
+                      >
+                    </div>
+                    <span
+                      class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-rose-100 text-rose-800 text-xs font-semibold"
+                    >
+                      <svg
+                        class="w-3.5 h-3.5"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="12" y1="8" x2="12" y2="12" />
+                        <line x1="12" y1="16" x2="12.01" y2="16" />
+                      </svg>
+                      3 Delays Active
+                    </span>
+                  </div>
+
+                  <!-- Chaotic Workflow Items -->
+                  <div class="space-y-2.5">
+                    <div
+                      class="flex items-center justify-between gap-3 p-3.5 rounded-xl bg-white border border-rose-200/70"
+                    >
+                      <div class="flex items-center gap-3 min-w-0">
+                        <div
+                          class="w-8 h-8 rounded-lg bg-rose-50 text-rose-600 flex items-center justify-center shrink-0"
+                        >
+                          <svg
+                            class="w-4 h-4"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          >
+                            <circle cx="12" cy="12" r="10" />
+                            <polyline points="12 6 12 12 16 14" />
+                          </svg>
+                        </div>
+                        <div class="truncate">
+                          <p
+                            class="text-sm font-semibold text-slate-900 truncate"
+                          >
+                            RE: FWD: RE: Final_Scope_v4.xlsx
+                          </p>
+                          <p class="text-xs text-rose-600 font-medium">
+                            Buried in 38 emails • Waiting 4 days for reply
+                          </p>
+                        </div>
+                      </div>
+                      <span
+                        class="shrink-0 px-2.5 py-1 rounded-lg bg-rose-100 text-rose-700 text-xs font-semibold"
+                        >Stalled</span
+                      >
+                    </div>
+
+                    <div
+                      class="flex items-center justify-between gap-3 p-3.5 rounded-xl bg-amber-50/50 border border-amber-200"
+                    >
+                      <div class="flex items-center gap-3 min-w-0">
+                        <div
+                          class="w-8 h-8 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center shrink-0"
+                        >
+                          <svg
+                            class="w-4 h-4"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          >
+                            <path
+                              d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"
+                            />
+                            <line x1="12" y1="9" x2="12" y2="13" />
+                            <line x1="12" y1="17" x2="12.01" y2="17" />
+                          </svg>
+                        </div>
+                        <div class="truncate">
+                          <p
+                            class="text-sm font-semibold text-slate-900 truncate"
+                          >
+                            Missed Client Follow-Up
+                          </p>
+                          <p class="text-xs text-amber-800">
+                            Nobody knew who owned the next step
+                          </p>
+                        </div>
+                      </div>
+                      <span
+                        class="shrink-0 px-2.5 py-1 rounded-lg bg-amber-200/80 text-amber-900 text-xs font-semibold"
+                        >Overdue</span
+                      >
+                    </div>
+
+                    <div
+                      class="flex items-center justify-between gap-3 p-3.5 rounded-xl bg-white border border-slate-200"
+                    >
+                      <div class="flex items-center gap-3 min-w-0">
+                        <div
+                          class="w-8 h-8 rounded-lg bg-slate-100 text-slate-500 flex items-center justify-center shrink-0"
+                        >
+                          <svg
+                            class="w-4 h-4"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          >
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                            <line x1="12" y1="17" x2="12.01" y2="17" />
+                          </svg>
+                        </div>
+                        <div class="truncate">
+                          <p
+                            class="text-sm font-semibold text-slate-900 truncate"
+                          >
+                            Support Ticket #8492
+                          </p>
+                          <p class="text-xs text-slate-500">
+                            Auto-bot loop • No human response in 72h
+                          </p>
+                        </div>
+                      </div>
+                      <span
+                        class="shrink-0 px-2.5 py-1 rounded-lg bg-slate-100 text-slate-600 text-xs font-semibold"
+                        >Pending</span
+                      >
+                    </div>
+                  </div>
+
+                  <!-- Hidden Cost Warning Widget -->
+                  <div
+                    class="rounded-xl bg-rose-950 text-white p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4"
+                  >
+                    <div>
+                      <div class="flex items-center gap-2">
+                        <span
+                          class="text-xs font-semibold uppercase tracking-wider text-rose-300"
+                          >Unpredictable Tool Stack</span
+                        >
+                        <span
+                          class="px-2 py-0.5 rounded-full bg-rose-500/30 text-rose-200 text-[11px] font-semibold"
+                          >+$115 Surprise Add-Ons</span
+                        >
+                      </div>
+                      <div class="flex items-baseline gap-2 mt-1">
+                        <span class="text-2xl font-extrabold">$312+</span>
+                        <span class="text-xs text-rose-200/80"
+                          >/ month across 5 fragmented subscriptions</span
+                        >
+                      </div>
+                    </div>
+                    <div
+                      class="border-t sm:border-t-0 pt-3 sm:pt-0 border-rose-900 sm:text-right"
+                    >
+                      <p class="text-xs text-rose-300">Time Wasted</p>
+                      <p class="text-sm font-bold text-rose-200">
+                        10+ hrs/wk chasing updates
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 3. VISUAL INFOGRAPHIC / HOW IT WORKS + SAVINGS ESTIMATOR ==================== -->
+      <section
+        id="how-it-works"
+        class="py-20 lg:py-28 bg-slate-50 border-y border-slate-200/70 scroll-mt-20"
+      >
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <!-- Section Header -->
+          <div class="text-center max-w-3xl mx-auto mb-16">
+            <span
+              class="inline-block px-3.5 py-1 rounded-full bg-blue-50 text-blue-700 border border-blue-200/80 text-xs font-bold uppercase tracking-wider mb-3"
+            >
+              How ClearFlow Works
+            </span>
+            <h2
+              class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight"
+            >
+              From scattered guesswork to clear execution in 3 simple steps
+            </h2>
+            <p class="mt-4 text-base sm:text-lg text-slate-600">
+              No weeks-long onboarding or complicated IT setup. Consolidate your
+              workflow, lock in upfront pricing, and start saving hours
+              immediately.
+            </p>
+          </div>
+
+          <!-- 3-Step Visual Infographic Flow -->
+          <div class="relative grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            <!-- Desktop Connector Line -->
+            <div
+              class="hidden md:block absolute top-20 left-[18%] right-[18%] h-0.5 border-t-2 border-dashed border-blue-200 z-0"
+              aria-hidden="true"
+            ></div>
+
+            <!-- Step 1 -->
+            <div
+              class="relative z-10 bg-white rounded-2xl border border-slate-200/90 p-7 shadow-card flex flex-col"
+            >
+              <div class="flex items-center justify-between mb-5">
+                <span
+                  class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-blue-600 text-white text-sm font-bold shadow-sm"
+                  >01</span
+                >
+                <span
+                  class="text-xs font-semibold text-slate-400 uppercase tracking-wider"
+                  >Consolidate</span
+                >
+              </div>
+
+              <!-- Custom SVG Infographic Visual: Scattered Tools -> Unified Hub -->
+              <div
+                class="h-32 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center mb-6 p-4"
+              >
+                <svg
+                  class="w-full max-w-[220px] h-24"
+                  viewBox="0 0 220 96"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <!-- Left Scattered Nodes -->
+                  <rect
+                    x="6"
+                    y="8"
+                    width="44"
+                    height="22"
+                    rx="6"
+                    fill="#FFFFFF"
+                    stroke="#CBD5E1"
+                    stroke-width="1.5"
+                  />
+                  <rect
+                    x="13"
+                    y="16"
+                    width="22"
+                    height="5"
+                    rx="2.5"
+                    fill="#94A3B8"
+                  />
+                  <rect
+                    x="6"
+                    y="37"
+                    width="44"
+                    height="22"
+                    rx="6"
+                    fill="#FFFFFF"
+                    stroke="#CBD5E1"
+                    stroke-width="1.5"
+                  />
+                  <rect
+                    x="13"
+                    y="45"
+                    width="28"
+                    height="5"
+                    rx="2.5"
+                    fill="#94A3B8"
+                  />
+                  <rect
+                    x="6"
+                    y="66"
+                    width="44"
+                    height="22"
+                    rx="6"
+                    fill="#FFFFFF"
+                    stroke="#CBD5E1"
+                    stroke-width="1.5"
+                  />
+                  <rect
+                    x="13"
+                    y="74"
+                    width="18"
+                    height="5"
+                    rx="2.5"
+                    fill="#94A3B8"
+                  />
+                  <!-- Flowing Arrows -->
+                  <path
+                    d="M54 19 C85 19, 85 48, 118 48"
+                    stroke="#2563EB"
+                    stroke-width="2"
+                    stroke-dasharray="4 3"
+                  />
+                  <path d="M54 48 L118 48" stroke="#2563EB" stroke-width="2" />
+                  <path
+                    d="M54 77 C85 77, 85 48, 118 48"
+                    stroke="#2563EB"
+                    stroke-width="2"
+                    stroke-dasharray="4 3"
+                  />
+                  <polygon points="116,43 125,48 116,53" fill="#2563EB" />
+                  <!-- Unified ClearFlow Node -->
+                  <rect
+                    x="130"
+                    y="20"
+                    width="84"
+                    height="56"
+                    rx="12"
+                    fill="#0F172A"
+                  />
+                  <rect
+                    x="142"
+                    y="33"
+                    width="38"
+                    height="6"
+                    rx="3"
+                    fill="#FFFFFF"
+                  />
+                  <rect
+                    x="142"
+                    y="45"
+                    width="58"
+                    height="6"
+                    rx="3"
+                    fill="#10B981"
+                  />
+                  <rect
+                    x="142"
+                    y="57"
+                    width="46"
+                    height="6"
+                    rx="3"
+                    fill="#3B82F6"
+                  />
+                </svg>
+              </div>
+
+              <h3 class="text-lg font-bold text-slate-900 mb-2">
+                Consolidate Scattered Tools
+              </h3>
+              <p class="text-sm text-slate-600 leading-relaxed">
+                Bring tasks, client approvals, and follow-ups into one organized
+                space—eliminating messy spreadsheets and endless email threads.
+              </p>
+            </div>
+
+            <!-- Step 2 -->
+            <div
+              class="relative z-10 bg-white rounded-2xl border border-slate-200/90 p-7 shadow-card flex flex-col"
+            >
+              <div class="flex items-center justify-between mb-5">
+                <span
+                  class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-blue-600 text-white text-sm font-bold shadow-sm"
+                  >02</span
+                >
+                <span
+                  class="text-xs font-semibold text-slate-400 uppercase tracking-wider"
+                  >Predictable Cost</span
+                >
+              </div>
+
+              <!-- Custom SVG Infographic Visual: Transparent Pricing Shield -->
+              <div
+                class="h-32 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center mb-6 p-4"
+              >
+                <svg
+                  class="w-full max-w-[220px] h-24"
+                  viewBox="0 0 220 96"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <!-- Clean Invoice Card -->
+                  <rect
+                    x="28"
+                    y="10"
+                    width="128"
+                    height="76"
+                    rx="10"
+                    fill="#FFFFFF"
+                    stroke="#CBD5E1"
+                    stroke-width="1.5"
+                  />
+                  <rect
+                    x="42"
+                    y="24"
+                    width="60"
+                    height="7"
+                    rx="3.5"
+                    fill="#0F172A"
+                  />
+                  <rect
+                    x="42"
+                    y="39"
+                    width="96"
+                    height="5"
+                    rx="2.5"
+                    fill="#E2E8F0"
+                  />
+                  <rect
+                    x="42"
+                    y="51"
+                    width="76"
+                    height="5"
+                    rx="2.5"
+                    fill="#E2E8F0"
+                  />
+                  <!-- $0 Hidden Fee Pill -->
+                  <rect
+                    x="42"
+                    y="64"
+                    width="78"
+                    height="14"
+                    rx="7"
+                    fill="#ECFDF5"
+                  />
+                  <text
+                    x="51"
+                    y="74"
+                    fill="#047857"
+                    font-size="8.5"
+                    font-weight="700"
+                    font-family="Inter, sans-serif"
+                  >
+                    $0 HIDDEN FEES
+                  </text>
+                  <!-- Emerald Verified Badge -->
+                  <circle cx="164" cy="48" r="24" fill="#10B981" />
+                  <path
+                    d="M154 48.5L160.5 55L175 40.5"
+                    stroke="#FFFFFF"
+                    stroke-width="3.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+
+              <h3 class="text-lg font-bold text-slate-900 mb-2">
+                Lock In Transparent Pricing
+              </h3>
+              <p class="text-sm text-slate-600 leading-relaxed">
+                Know your exact costs upfront with simple, affordable plans—zero
+                hidden fees, surprise overages, or locked-behind-paywall
+                add-ons.
+              </p>
+            </div>
+
+            <!-- Step 3 -->
+            <div
+              class="relative z-10 bg-white rounded-2xl border border-slate-200/90 p-7 shadow-card flex flex-col"
+            >
+              <div class="flex items-center justify-between mb-5">
+                <span
+                  class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500 text-white text-sm font-bold shadow-sm"
+                  >03</span
+                >
+                <span
+                  class="text-xs font-semibold text-slate-400 uppercase tracking-wider"
+                  >Faster Delivery</span
+                >
+              </div>
+
+              <!-- Custom SVG Infographic Visual: Automated Tracking + Human Support -->
+              <div
+                class="h-32 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center mb-6 p-4"
+              >
+                <svg
+                  class="w-full max-w-[220px] h-24"
+                  viewBox="0 0 220 96"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <!-- Progress Bar Track -->
+                  <rect
+                    x="16"
+                    y="20"
+                    width="132"
+                    height="28"
+                    rx="8"
+                    fill="#FFFFFF"
+                    stroke="#CBD5E1"
+                    stroke-width="1.5"
+                  />
+                  <rect
+                    x="26"
+                    y="30"
+                    width="84"
+                    height="8"
+                    rx="4"
+                    fill="#DBEAFE"
+                  />
+                  <rect
+                    x="26"
+                    y="30"
+                    width="66"
+                    height="8"
+                    rx="4"
+                    fill="#2563EB"
+                  />
+                  <circle cx="130" cy="34" r="6" fill="#10B981" />
+                  <!-- Support Chat Bubble -->
+                  <rect
+                    x="64"
+                    y="56"
+                    width="140"
+                    height="30"
+                    rx="10"
+                    fill="#2563EB"
+                  />
+                  <circle
+                    cx="80"
+                    cy="71"
+                    r="6"
+                    fill="#FFFFFF"
+                    fill-opacity="0.25"
+                  />
+                  <circle cx="80" cy="71" r="3" fill="#10B981" />
+                  <rect
+                    x="94"
+                    y="65"
+                    width="92"
+                    height="5"
+                    rx="2.5"
+                    fill="#FFFFFF"
+                  />
+                  <rect
+                    x="94"
+                    y="74"
+                    width="58"
+                    height="4"
+                    rx="2"
+                    fill="#BFDBFE"
+                  />
+                </svg>
+              </div>
+
+              <h3 class="text-lg font-bold text-slate-900 mb-2">
+                Execute Faster with Dependable Support
+              </h3>
+              <p class="text-sm text-slate-600 leading-relaxed">
+                Automated status tracking keeps every project moving on schedule
+                while responsive human support helps whenever your team needs
+                it.
+              </p>
+            </div>
+          </div>
+
+          <!-- ========== INTERACTIVE TIME & COST SAVINGS ESTIMATOR ========== -->
+          <div
+            class="bg-white rounded-3xl border border-slate-200 shadow-soft p-6 sm:p-8 lg:p-10"
+          >
+            <div
+              class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center"
+            >
+              <!-- Left: Interactive Sliders -->
+              <div class="lg:col-span-7 space-y-6">
+                <div>
+                  <div
+                    class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full mb-2"
+                  >
+                    Interactive Calculator
+                  </div>
+                  <h3
+                    class="text-2xl sm:text-3xl font-extrabold text-slate-900"
+                  >
+                    Time &amp; Cost Savings Estimator
+                  </h3>
+                  <p class="text-sm sm:text-base text-slate-600 mt-1.5">
+                    Slide to see how much time and budget your team can reclaim
+                    each month by eliminating manual follow-ups and scattered
+                    tools.
+                  </p>
+                </div>
+
+                <!-- Slider 1: Hours Lost Per Week -->
+                <div
+                  class="space-y-2.5 bg-slate-50 rounded-2xl p-4 sm:p-5 border border-slate-200/70"
+                >
+                  <div class="flex items-center justify-between gap-2">
+                    <label
+                      for="hoursSlider"
+                      class="text-sm font-semibold text-slate-800"
+                    >
+                      Hours lost per week to manual follow-ups &amp; chasing
+                      updates
+                    </label>
+                    <span
+                      id="hoursValueDisplay"
+                      class="shrink-0 px-3 py-1 rounded-lg bg-blue-600 text-white text-sm font-bold"
+                    >
+                      12 hrs/wk
+                    </span>
+                  </div>
+                  <input
+                    id="hoursSlider"
+                    type="range"
+                    min="2"
+                    max="40"
+                    step="1"
+                    value="12"
+                    class="cf-slider w-full"
+                  />
+                  <div
+                    class="flex justify-between text-xs text-slate-400 font-medium"
+                  >
+                    <span>2 hrs/wk</span>
+                    <span>20 hrs/wk</span>
+                    <span>40 hrs/wk</span>
+                  </div>
+                </div>
+
+                <!-- Slider 2: Avg Hourly Value -->
+                <div
+                  class="space-y-2.5 bg-slate-50 rounded-2xl p-4 sm:p-5 border border-slate-200/70"
+                >
+                  <div class="flex items-center justify-between gap-2">
+                    <label
+                      for="rateSlider"
+                      class="text-sm font-semibold text-slate-800"
+                    >
+                      Average team hourly value (time cost)
+                    </label>
+                    <span
+                      id="rateValueDisplay"
+                      class="shrink-0 px-3 py-1 rounded-lg bg-slate-900 text-white text-sm font-bold"
+                    >
+                      $50/hr
+                    </span>
+                  </div>
+                  <input
+                    id="rateSlider"
+                    type="range"
+                    min="25"
+                    max="150"
+                    step="5"
+                    value="50"
+                    class="cf-slider w-full"
+                  />
+                  <div
+                    class="flex justify-between text-xs text-slate-400 font-medium"
+                  >
+                    <span>$25/hr</span>
+                    <span>$85/hr</span>
+                    <span>$150/hr</span>
+                  </div>
+                </div>
+
+                <p class="text-xs text-slate-400">
+                  *Estimates reflect our early-user average of 60% reduction in
+                  manual follow-up delays plus ~$120/mo average savings from
+                  consolidating redundant subscriptions.
+                </p>
+              </div>
+
+              <!-- Right: Live Calculated Results Panel -->
+              <div
+                class="lg:col-span-5 bg-slate-900 text-white rounded-2xl p-6 sm:p-8 flex flex-col justify-between space-y-6"
+              >
+                <div>
+                  <p
+                    class="text-xs font-semibold uppercase tracking-wider text-emerald-400 mb-4"
+                  >
+                    Your Estimated Monthly Impact
+                  </p>
+
+                  <div
+                    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4"
+                  >
+                    <!-- Hours Saved -->
+                    <div
+                      class="bg-slate-800/80 border border-slate-700/80 rounded-xl p-4"
+                    >
+                      <p class="text-xs font-medium text-slate-400">
+                        Time Reclaimed / Month
+                      </p>
+                      <div class="flex items-baseline gap-2 mt-1">
+                        <span
+                          id="estHoursSaved"
+                          class="text-3xl sm:text-4xl font-extrabold text-white"
+                          >31</span
+                        >
+                        <span class="text-sm font-semibold text-emerald-400"
+                          >hours saved</span
+                        >
+                      </div>
+                    </div>
+
+                    <!-- Money Saved -->
+                    <div
+                      class="bg-emerald-500/15 border border-emerald-500/30 rounded-xl p-4"
+                    >
+                      <p class="text-xs font-medium text-emerald-200">
+                        Total Value Saved / Month
+                      </p>
+                      <div class="flex items-baseline gap-2 mt-1">
+                        <span
+                          id="estMoneySaved"
+                          class="text-3xl sm:text-4xl font-extrabold text-emerald-400"
+                          >$1,670</span
+                        >
+                        <span class="text-sm font-medium text-emerald-200"
+                          >/ month</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Annual Projection Pill -->
+                  <div
+                    class="mt-4 flex items-center justify-between text-xs text-slate-300 bg-slate-800/50 rounded-xl px-4 py-3"
+                  >
+                    <span>Projected Annual Savings</span>
+                    <span
+                      id="estAnnualSaved"
+                      class="font-bold text-white text-sm"
+                      >$20,040 / yr</span
+                    >
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  data-open-booking
+                  class="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm shadow-md transition-all cursor-pointer"
+                >
+                  <span>See This Live in a 10-Min Walkthrough</span>
+                  <svg
+                    class="w-4 h-4"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M5 12h14M13 5l7 7-7 7" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 4. KEY FEATURES & BENEFITS GRID ==================== -->
+      <section id="features" class="py-20 lg:py-28 bg-white scroll-mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <!-- Section Header -->
+          <div class="max-w-2xl mb-14">
+            <span
+              class="inline-block px-3.5 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-bold uppercase tracking-wider mb-3"
+            >
+              Built Around How You Work
+            </span>
+            <h2
+              class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight"
+            >
+              Everything you need to move faster—without the clutter
+            </h2>
+            <p class="mt-4 text-base sm:text-lg text-slate-600">
+              ClearFlow replaces patchwork tools with dependable execution,
+              upfront pricing, and real human support.
+            </p>
+          </div>
+
+          <!-- 4 Core Feature Cards -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+            <!-- Feature 1 -->
+            <div
+              class="group bg-slate-50/70 hover:bg-white rounded-2xl border border-slate-200/90 hover:border-blue-200 p-7 sm:p-8 shadow-sm hover:shadow-soft transition-all"
+            >
+              <div
+                class="w-12 h-12 rounded-xl bg-blue-600 text-white flex items-center justify-center mb-5 shadow-sm shadow-blue-600/20"
+              >
+                <svg
+                  class="w-6 h-6"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="3" y="3" width="7" height="7" rx="1.5" />
+                  <rect x="14" y="3" width="7" height="7" rx="1.5" />
+                  <rect x="14" y="14" width="7" height="7" rx="1.5" />
+                  <rect x="3" y="14" width="7" height="7" rx="1.5" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-slate-900 mb-2.5">
+                One Unified Workflow
+              </h3>
+              <p class="text-slate-600 leading-relaxed mb-4">
+                Replace messy spreadsheets, endless email threads, and
+                disconnected apps with one shared workspace where tasks, files,
+                and client approvals live together.
+              </p>
+              <ul class="space-y-2 text-sm text-slate-700 font-medium">
+                <li class="flex items-center gap-2">
+                  <svg
+                    class="w-4 h-4 text-emerald-500 shrink-0"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                  Single source of truth for teams &amp; clients
+                </li>
+                <li class="flex items-center gap-2">
+                  <svg
+                    class="w-4 h-4 text-emerald-500 shrink-0"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                  Zero duplicate data entry across tools
+                </li>
+              </ul>
+            </div>
+
+            <!-- Feature 2 -->
+            <div
+              class="group bg-slate-50/70 hover:bg-white rounded-2xl border border-slate-200/90 hover:border-emerald-200 p-7 sm:p-8 shadow-sm hover:shadow-soft transition-all"
+            >
+              <div
+                class="w-12 h-12 rounded-xl bg-emerald-500 text-white flex items-center justify-center mb-5 shadow-sm shadow-emerald-500/20"
+              >
+                <svg
+                  class="w-6 h-6"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  <path d="M9 12l2 2 4-4" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-slate-900 mb-2.5">
+                100% Transparent Pricing
+              </h3>
+              <p class="text-slate-600 leading-relaxed mb-4">
+                Clear, affordable plans with no hidden fees, surprise
+                per-feature charges, or unpredictable add-ons as your business
+                grows.
+              </p>
+              <ul class="space-y-2 text-sm text-slate-700 font-medium">
+                <li class="flex items-center gap-2">
+                  <svg
+                    class="w-4 h-4 text-emerald-500 shrink-0"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                  Flat, predictable monthly billing
+                </li>
+                <li class="flex items-center gap-2">
+                  <svg
+                    class="w-4 h-4 text-emerald-500 shrink-0"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                  No setup costs or long-term lock-ins
+                </li>
+              </ul>
+            </div>
+
+            <!-- Feature 3 -->
+            <div
+              class="group bg-slate-50/70 hover:bg-white rounded-2xl border border-slate-200/90 hover:border-blue-200 p-7 sm:p-8 shadow-sm hover:shadow-soft transition-all"
+            >
+              <div
+                class="w-12 h-12 rounded-xl bg-slate-900 text-white flex items-center justify-center mb-5 shadow-sm"
+              >
+                <svg
+                  class="w-6 h-6"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-slate-900 mb-2.5">
+                Reliable Follow-Ups &amp; Faster Decisions
+              </h3>
+              <p class="text-slate-600 leading-relaxed mb-4">
+                Real-time progress visibility and smart automated nudges keep
+                stakeholders aligned so nothing slips through the cracks.
+              </p>
+              <ul class="space-y-2 text-sm text-slate-700 font-medium">
+                <li class="flex items-center gap-2">
+                  <svg
+                    class="w-4 h-4 text-emerald-500 shrink-0"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                  Instant status clarity without chasing updates
+                </li>
+                <li class="flex items-center gap-2">
+                  <svg
+                    class="w-4 h-4 text-emerald-500 shrink-0"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                  Automated reminders for pending approvals
+                </li>
+              </ul>
+            </div>
+
+            <!-- Feature 4 -->
+            <div
+              class="group bg-slate-50/70 hover:bg-white rounded-2xl border border-slate-200/90 hover:border-blue-200 p-7 sm:p-8 shadow-sm hover:shadow-soft transition-all"
+            >
+              <div
+                class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 border border-blue-200/80 flex items-center justify-center mb-5"
+              >
+                <svg
+                  class="w-6 h-6"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-slate-900 mb-2.5">
+                Dependable Human Support
+              </h3>
+              <p class="text-slate-600 leading-relaxed mb-4">
+                Built around how your team actually works, backed by responsive
+                specialists who solve problems fast instead of leaving you
+                waiting on tickets.
+              </p>
+              <ul class="space-y-2 text-sm text-slate-700 font-medium">
+                <li class="flex items-center gap-2">
+                  <svg
+                    class="w-4 h-4 text-emerald-500 shrink-0"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                  Average response time under 2 business hours
+                </li>
+                <li class="flex items-center gap-2">
+                  <svg
+                    class="w-4 h-4 text-emerald-500 shrink-0"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                  Hands-on migration &amp; workflow setup guidance
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 5. EARLY USER IMPACT / TESTIMONIALS ==================== -->
+      <section class="py-20 bg-slate-50 border-y border-slate-200/70">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <!-- Header + Quick Impact Metrics -->
+          <div
+            class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12"
+          >
+            <div class="max-w-xl">
+              <span
+                class="inline-block px-3.5 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-bold uppercase tracking-wider mb-3"
+              >
+                Early User Impact
+              </span>
+              <h2
+                class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight"
+              >
+                Real teams cutting delays from week one
+              </h2>
+            </div>
+
+            <div class="flex flex-wrap gap-3">
+              <div
+                class="px-4 py-2.5 rounded-xl bg-white border border-slate-200 shadow-sm"
+              >
+                <span class="text-lg font-extrabold text-emerald-600">60%</span>
+                <span class="text-xs font-medium text-slate-600 ml-1.5"
+                  >Fewer Delays</span
+                >
+              </div>
+              <div
+                class="px-4 py-2.5 rounded-xl bg-white border border-slate-200 shadow-sm"
+              >
+                <span class="text-lg font-extrabold text-blue-600"
+                  >8.5+ hrs</span
+                >
+                <span class="text-xs font-medium text-slate-600 ml-1.5"
+                  >Saved Weekly</span
+                >
+              </div>
+              <div
+                class="px-4 py-2.5 rounded-xl bg-white border border-slate-200 shadow-sm"
+              >
+                <span class="text-lg font-extrabold text-slate-900">$0</span>
+                <span class="text-xs font-medium text-slate-600 ml-1.5"
+                  >Surprise Fees</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- 3 Early-Adopter Cards -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+            <!-- Testimonial 1 -->
+            <article
+              class="bg-white rounded-2xl border border-slate-200/90 p-7 shadow-card flex flex-col justify-between"
+            >
+              <div>
+                <div
+                  class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold mb-5"
+                >
+                  <svg
+                    class="w-3.5 h-3.5"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                    <polyline points="17 6 23 6 23 12" />
+                  </svg>
+                  Cut project delays by 58%
+                </div>
+                <p class="text-slate-700 text-sm sm:text-base leading-relaxed">
+                  "We used to lose half of Monday just chasing status updates
+                  across email and spreadsheets. With ClearFlow, everyone sees
+                  the exact next step in seconds and approvals happen the same
+                  day."
+                </p>
+              </div>
+              <div
+                class="mt-6 pt-5 border-t border-slate-100 flex items-center gap-3"
+              >
+                <div
+                  class="w-10 h-10 rounded-full bg-blue-600 text-white font-bold text-sm flex items-center justify-center shrink-0"
+                >
+                  ML
+                </div>
+                <div>
+                  <p class="text-sm font-bold text-slate-900">Maya Lin</p>
+                  <p class="text-xs text-slate-500">
+                    Operations Lead, Northstar Studio
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <!-- Testimonial 2 -->
+            <article
+              class="bg-white rounded-2xl border border-slate-200/90 p-7 shadow-card flex flex-col justify-between"
+            >
+              <div>
+                <div
+                  class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold mb-5"
+                >
+                  <svg
+                    class="w-3.5 h-3.5"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <line x1="12" y1="1" x2="12" y2="23" />
+                    <path
+                      d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"
+                    />
+                  </svg>
+                  Eliminated $240/mo in hidden fees
+                </div>
+                <p class="text-slate-700 text-sm sm:text-base leading-relaxed">
+                  "Our previous tools kept tacking on surprise seat and
+                  automation charges. Moving to ClearFlow gave us one
+                  predictable bill and faster workflows from day one—no
+                  guesswork."
+                </p>
+              </div>
+              <div
+                class="mt-6 pt-5 border-t border-slate-100 flex items-center gap-3"
+              >
+                <div
+                  class="w-10 h-10 rounded-full bg-emerald-600 text-white font-bold text-sm flex items-center justify-center shrink-0"
+                >
+                  DO
+                </div>
+                <div>
+                  <p class="text-sm font-bold text-slate-900">David Okafor</p>
+                  <p class="text-xs text-slate-500">
+                    Founder, BrightPath Logistics
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <!-- Testimonial 3 -->
+            <article
+              class="bg-white rounded-2xl border border-slate-200/90 p-7 shadow-card flex flex-col justify-between"
+            >
+              <div>
+                <div
+                  class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-bold mb-5"
+                >
+                  <svg
+                    class="w-3.5 h-3.5"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="12 6 12 12 16 14" />
+                  </svg>
+                  Saved 9+ hours/week on follow-ups
+                </div>
+                <p class="text-slate-700 text-sm sm:text-base leading-relaxed">
+                  "Nothing slips through the cracks anymore. Automated
+                  follow-ups keep our clients informed automatically, and
+                  whenever we have a question, ClearFlow's human support replies
+                  within the hour."
+                </p>
+              </div>
+              <div
+                class="mt-6 pt-5 border-t border-slate-100 flex items-center gap-3"
+              >
+                <div
+                  class="w-10 h-10 rounded-full bg-slate-900 text-white font-bold text-sm flex items-center justify-center shrink-0"
+                >
+                  RT
+                </div>
+                <div>
+                  <p class="text-sm font-bold text-slate-900">Rachel Torres</p>
+                  <p class="text-xs text-slate-500">
+                    Client Success Manager, Harborline Advisory
+                  </p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 6. CLEAR, SIMPLE PRICING SECTION ==================== -->
+      <section id="pricing" class="py-20 lg:py-28 bg-white scroll-mt-20">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <!-- Header -->
+          <div class="text-center max-w-2xl mx-auto mb-12">
+            <span
+              class="inline-block px-3.5 py-1 rounded-full bg-blue-50 text-blue-700 border border-blue-200/80 text-xs font-bold uppercase tracking-wider mb-3"
+            >
+              Transparent Pricing
+            </span>
+            <h2
+              class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight"
+            >
+              Simple pricing with zero hidden fees
+            </h2>
+            <p class="mt-3 text-base sm:text-lg text-slate-600">
+              No surprise add-ons, no rigid contracts. Cancel or adjust your
+              plan anytime.
+            </p>
+
+            <!-- Monthly / Annual Billing Toggle -->
+            <div
+              class="mt-7 inline-flex items-center gap-3 bg-slate-100 p-1.5 rounded-xl border border-slate-200/80"
+            >
+              <button
+                id="billingMonthly"
+                type="button"
+                class="px-4 py-2 rounded-lg text-sm font-semibold bg-white text-slate-900 shadow-sm transition-all cursor-pointer"
+              >
+                Monthly
+              </button>
+              <button
+                id="billingAnnual"
+                type="button"
+                class="px-4 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:text-slate-900 transition-all flex items-center gap-1.5 cursor-pointer"
+              >
+                Annual
+                <span
+                  class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 text-xs font-bold"
+                  >Save 20%</span
+                >
+              </button>
+            </div>
+          </div>
+
+          <!-- Two Clean Pricing Tiers -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+            <!-- Starter Tier -->
+            <div
+              class="bg-white rounded-3xl border border-slate-200 p-8 shadow-card flex flex-col justify-between"
+            >
+              <div>
+                <div class="flex items-center justify-between mb-3">
+                  <h3 class="text-xl font-bold text-slate-900">Starter</h3>
+                  <span
+                    class="text-xs font-semibold px-2.5 py-1 rounded-full bg-slate-100 text-slate-600"
+                    >For lean teams</span
+                  >
+                </div>
+                <p class="text-sm text-slate-600 mb-6">
+                  Everything a solo operator or small team needs to replace
+                  scattered tools and speed up follow-ups.
+                </p>
+
+                <div class="flex items-baseline gap-1.5 mb-1">
+                  <span
+                    id="starterPrice"
+                    class="text-4xl sm:text-5xl font-extrabold text-slate-900"
+                    >$29</span
+                  >
+                  <span class="text-sm font-medium text-slate-500"
+                    >/ month</span
+                  >
+                </div>
+                <p id="starterNote" class="text-xs text-slate-400 mb-7">
+                  Billed monthly • Up to 5 team members included
+                </p>
+
+                <ul class="space-y-3.5 text-sm text-slate-700 mb-8">
+                  <li class="flex items-start gap-3">
+                    <svg
+                      class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                    <span
+                      >Unified workspace for tasks, files &amp; approvals</span
+                    >
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <svg
+                      class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                    <span>Automated client &amp; team follow-up reminders</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <svg
+                      class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                    <span
+                      >Real-time status dashboard &amp; shareable links</span
+                    >
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <svg
+                      class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                    <span>Dependable human email support (within 2 hrs)</span>
+                  </li>
+                </ul>
+              </div>
+
+              <button
+                type="button"
+                data-open-booking
+                data-plan="Starter"
+                class="w-full py-3.5 px-5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-semibold text-sm shadow-sm transition-all cursor-pointer"
+              >
+                Book 10-Min Walkthrough
+              </button>
+            </div>
+
+            <!-- Growth Tier (Highlighted) -->
+            <div
+              class="relative bg-slate-900 text-white rounded-3xl border-2 border-blue-600 p-8 shadow-soft flex flex-col justify-between"
+            >
+              <div
+                class="absolute -top-3.5 right-6 px-3.5 py-1 rounded-full bg-blue-600 text-white text-xs font-bold tracking-wide shadow-sm"
+              >
+                Most Popular
+              </div>
+
+              <div>
+                <div class="flex items-center justify-between mb-3">
+                  <h3 class="text-xl font-bold text-white">Growth</h3>
+                  <span
+                    class="text-xs font-semibold px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300"
+                    >Best Value</span
+                  >
+                </div>
+                <p class="text-sm text-slate-300 mb-6">
+                  Built for growing businesses scaling workflows across teams,
+                  clients, and high-velocity projects.
+                </p>
+
+                <div class="flex items-baseline gap-1.5 mb-1">
+                  <span
+                    id="growthPrice"
+                    class="text-4xl sm:text-5xl font-extrabold text-white"
+                    >$79</span
+                  >
+                  <span class="text-sm font-medium text-slate-400"
+                    >/ month</span
+                  >
+                </div>
+                <p id="growthNote" class="text-xs text-slate-400 mb-7">
+                  Billed monthly • Up to 20 team members + unlimited clients
+                </p>
+
+                <ul class="space-y-3.5 text-sm text-slate-200 mb-8">
+                  <li class="flex items-start gap-3">
+                    <svg
+                      class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                    <span
+                      >Everything in Starter, plus custom workflow
+                      templates</span
+                    >
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <svg
+                      class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                    <span
+                      >Multi-step approval routing &amp; smart escalation</span
+                    >
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <svg
+                      class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                    <span>Transparent cost &amp; time-tracking insights</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <svg
+                      class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                    <span
+                      >Priority human support + guided workflow migration</span
+                    >
+                  </li>
+                </ul>
+              </div>
+
+              <button
+                type="button"
+                data-open-booking
+                data-plan="Growth"
+                class="w-full py-3.5 px-5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm shadow-md shadow-blue-600/30 transition-all cursor-pointer"
+              >
+                Book 10-Min Walkthrough
+              </button>
+            </div>
+          </div>
+
+          <!-- Guarantee Strip -->
+          <div class="mt-8 text-center">
+            <p
+              class="inline-flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs sm:text-sm font-medium text-slate-500"
+            >
+              <span class="inline-flex items-center gap-1.5">
+                <svg
+                  class="w-4 h-4 text-emerald-500"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                >
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                No hidden fees
+              </span>
+              <span class="inline-flex items-center gap-1.5">
+                <svg
+                  class="w-4 h-4 text-emerald-500"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                >
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                Zero setup charges
+              </span>
+              <span class="inline-flex items-center gap-1.5">
+                <svg
+                  class="w-4 h-4 text-emerald-500"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                >
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                Cancel anytime in 2 clicks
+              </span>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 7. CONTACT & DIRECT CALL-TO-ACTION SECTION ==================== -->
+      <section
+        id="contact"
+        class="py-20 lg:py-28 bg-slate-50 border-t border-slate-200/80 scroll-mt-20"
+      >
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <!-- Strong Closing CTA Banner -->
+          <div class="text-center max-w-2xl mx-auto mb-14">
+            <span
+              class="inline-block px-3.5 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-bold uppercase tracking-wider mb-3"
+            >
+              Let's Talk
+            </span>
+            <h2
+              class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight"
+            >
+              See how this works for you in practice.
+            </h2>
+            <p class="mt-3 text-base sm:text-lg text-slate-600">
+              Book a quick ten-minute walkthrough or send a short message below
+              to set up a call this week—no pressure, no sales fluff.
+            </p>
+          </div>
+
+          <!-- Two-Column Contact Layout -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+            <!-- Left Column: Direct Contact Details Card -->
+            <div
+              class="lg:col-span-5 bg-slate-900 text-white rounded-3xl p-7 sm:p-9 flex flex-col justify-between shadow-soft"
+            >
+              <div class="space-y-7">
+                <div>
+                  <h3 class="text-2xl font-bold text-white">Direct Contact</h3>
+                  <p class="text-sm text-slate-400 mt-1.5 leading-relaxed">
+                    Reach a real person directly. We respond quickly so you
+                    never stay stuck waiting.
+                  </p>
+                </div>
+
+                <!-- Contact Info Items -->
+                <div class="space-y-5">
+                  <!-- Email + Copy Button -->
+                  <div class="flex items-start gap-4">
+                    <div
+                      class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-blue-400 shrink-0"
+                    >
+                      <svg
+                        class="w-5 h-5"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path
+                          d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                        />
+                        <polyline points="22,6 12,13 2,6" />
+                      </svg>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                      <p
+                        class="text-xs font-semibold uppercase tracking-wider text-slate-400"
+                      >
+                        Email Us
+                      </p>
+                      <div class="flex flex-wrap items-center gap-2 mt-0.5">
+                        <a
+                          href="mailto:hello@clearflow.app"
+                          class="text-base font-semibold text-white hover:text-blue-400 transition-colors"
+                        >
+                          hello@clearflow.app
+                        </a>
+                        <button
+                          id="copyEmailBtn"
+                          type="button"
+                          class="px-2 py-0.5 rounded-md bg-slate-800 hover:bg-slate-700 text-[11px] font-semibold text-slate-300 transition-colors cursor-pointer"
+                        >
+                          Copy
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Phone -->
+                  <div class="flex items-start gap-4">
+                    <div
+                      class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-emerald-400 shrink-0"
+                    >
+                      <svg
+                        class="w-5 h-5"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path
+                          d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                        />
+                      </svg>
+                    </div>
+                    <div>
+                      <p
+                        class="text-xs font-semibold uppercase tracking-wider text-slate-400"
+                      >
+                        Phone
+                      </p>
+                      <a
+                        href="tel:+15552345678"
+                        class="text-base font-semibold text-white hover:text-emerald-400 transition-colors mt-0.5 block"
+                      >
+                        +1 (555) 234-5678
+                      </a>
+                    </div>
+                  </div>
+
+                  <!-- Response Time -->
+                  <div class="flex items-start gap-4">
+                    <div
+                      class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-emerald-400 shrink-0"
+                    >
+                      <svg
+                        class="w-5 h-5"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <polygon
+                          points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"
+                        />
+                      </svg>
+                    </div>
+                    <div>
+                      <p
+                        class="text-xs font-semibold uppercase tracking-wider text-slate-400"
+                      >
+                        Response Time
+                      </p>
+                      <p class="text-base font-semibold text-white mt-0.5">
+                        Within 2 business hours
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- Availability -->
+                  <div class="flex items-start gap-4">
+                    <div
+                      class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-blue-400 shrink-0"
+                    >
+                      <svg
+                        class="w-5 h-5"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <circle cx="12" cy="12" r="10" />
+                        <polyline points="12 6 12 12 16 14" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p
+                        class="text-xs font-semibold uppercase tracking-wider text-slate-400"
+                      >
+                        Availability
+                      </p>
+                      <p class="text-base font-semibold text-white mt-0.5">
+                        Mon–Fri, 9 AM – 6 PM
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Bottom Social Links & Quick Calendar Trigger -->
+              <div class="mt-9 pt-6 border-t border-slate-800 space-y-5">
+                <button
+                  type="button"
+                  data-open-booking
+                  class="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold transition-all cursor-pointer"
+                >
+                  <svg
+                    class="w-4 h-4"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <rect x="3" y="4" width="18" height="18" rx="2" />
+                    <line x1="16" y1="2" x2="16" y2="6" />
+                    <line x1="8" y1="2" x2="8" y2="6" />
+                    <line x1="3" y1="10" x2="21" y2="10" />
+                  </svg>
+                  Pick a 10-Min Slot Directly
+                </button>
+
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-medium text-slate-400"
+                    >Connect with us</span
+                  >
+                  <div class="flex items-center gap-2.5">
+                    <!-- LinkedIn -->
+                    <a
+                      href="https://linkedin.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="ClearFlow on LinkedIn"
+                      class="w-9 h-9 rounded-lg bg-slate-800 hover:bg-blue-600 text-slate-300 hover:text-white flex items-center justify-center transition-colors"
+                    >
+                      <svg
+                        class="w-4 h-4"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"
+                        />
+                      </svg>
+                    </a>
+                    <!-- X / Twitter -->
+                    <a
+                      href="https://x.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="ClearFlow on X"
+                      class="w-9 h-9 rounded-lg bg-slate-800 hover:bg-blue-600 text-slate-300 hover:text-white flex items-center justify-center transition-colors"
+                    >
+                      <svg
+                        class="w-4 h-4"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+                        />
+                      </svg>
+                    </a>
+                    <!-- Instagram -->
+                    <a
+                      href="https://instagram.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="ClearFlow on Instagram"
+                      class="w-9 h-9 rounded-lg bg-slate-800 hover:bg-blue-600 text-slate-300 hover:text-white flex items-center justify-center transition-colors"
+                    >
+                      <svg
+                        class="w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <rect
+                          x="2"
+                          y="2"
+                          width="20"
+                          height="20"
+                          rx="5"
+                          ry="5"
+                        />
+                        <path
+                          d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+                        />
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Column: Quick "Set Up a Short Call" Form -->
+            <div
+              class="lg:col-span-7 bg-white rounded-3xl border border-slate-200 p-7 sm:p-9 shadow-card"
+            >
+              <div id="contactFormContainer">
+                <h3 class="text-2xl font-bold text-slate-900">
+                  Set Up a Short Call
+                </h3>
+                <p class="text-sm text-slate-600 mt-1 mb-6">
+                  Tell us what's slowing your team down and we'll follow up
+                  within 2 business hours.
+                </p>
+
+                <form id="contactForm" class="space-y-5" novalidate>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div>
+                      <label
+                        for="contactName"
+                        class="block text-sm font-semibold text-slate-700 mb-1.5"
+                        >Full Name *</label
+                      >
+                      <input
+                        id="contactName"
+                        name="name"
+                        type="text"
+                        required
+                        placeholder="Alex Rivera"
+                        class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 outline-none text-sm text-slate-900 transition-all"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        for="contactEmail"
+                        class="block text-sm font-semibold text-slate-700 mb-1.5"
+                        >Work Email *</label
+                      >
+                      <input
+                        id="contactEmail"
+                        name="email"
+                        type="email"
+                        required
+                        placeholder="alex@company.com"
+                        class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 outline-none text-sm text-slate-900 transition-all"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label
+                      for="contactCompany"
+                      class="block text-sm font-semibold text-slate-700 mb-1.5"
+                      >Company / Role</label
+                    >
+                    <input
+                      id="contactCompany"
+                      name="company"
+                      type="text"
+                      placeholder="e.g., Founder at Ridgeway Co."
+                      class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 outline-none text-sm text-slate-900 transition-all"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      for="contactBottleneck"
+                      class="block text-sm font-semibold text-slate-700 mb-1.5"
+                      >Biggest workflow bottleneck *</label
+                    >
+                    <!-- Quick-fill bottleneck tags -->
+                    <div class="flex flex-wrap gap-2 mb-2.5">
+                      <button
+                        type="button"
+                        data-quick-tag="Chasing slow client/team follow-ups"
+                        class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-xs font-medium text-slate-600 transition-colors cursor-pointer"
+                      >
+                        + Slow follow-ups
+                      </button>
+                      <button
+                        type="button"
+                        data-quick-tag="Too many scattered tools and spreadsheets"
+                        class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-xs font-medium text-slate-600 transition-colors cursor-pointer"
+                      >
+                        + Scattered tools
+                      </button>
+                      <button
+                        type="button"
+                        data-quick-tag="Unclear pricing and hidden software fees"
+                        class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-xs font-medium text-slate-600 transition-colors cursor-pointer"
+                      >
+                        + Hidden tool costs
+                      </button>
+                    </div>
+                    <textarea
+                      id="contactBottleneck"
+                      name="bottleneck"
+                      rows="3"
+                      required
+                      placeholder="Share a quick sentence about what takes too long right now..."
+                      class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 outline-none text-sm text-slate-900 resize-none transition-all"
+                    ></textarea>
+                  </div>
+
+                  <!-- Inline Validation Error Box -->
+                  <div
+                    id="contactFormError"
+                    class="hidden rounded-xl bg-rose-50 border border-rose-200 px-4 py-3 text-sm text-rose-700 font-medium"
+                  ></div>
+
+                  <button
+                    type="submit"
+                    class="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-700 active:scale-[0.99] text-white font-semibold text-base shadow-md shadow-blue-600/20 transition-all cursor-pointer"
+                  >
+                    <span>Request a Short Call</span>
+                    <svg
+                      class="w-4 h-4"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <line x1="22" y1="2" x2="11" y2="13" />
+                      <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                    </svg>
+                  </button>
+                </form>
+              </div>
+
+              <!-- Inline Confirmation State -->
+              <div
+                id="contactFormSuccess"
+                class="hidden py-10 text-center space-y-4 animate-fade-slide"
+              >
+                <div
+                  class="w-16 h-16 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto"
+                >
+                  <svg
+                    class="w-8 h-8"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                </div>
+                <h3 class="text-2xl font-extrabold text-slate-900">
+                  Message Received!
+                </h3>
+                <p class="text-sm sm:text-base text-slate-600 max-w-md mx-auto">
+                  Thanks,
+                  <span
+                    id="confirmedContactName"
+                    class="font-semibold text-slate-900"
+                    >there</span
+                  >! A ClearFlow specialist will email
+                  <span
+                    id="confirmedContactEmail"
+                    class="font-semibold text-slate-900"
+                  ></span>
+                  within 2 business hours to set up your short call.
+                </p>
+                <div
+                  class="pt-3 flex flex-wrap items-center justify-center gap-3"
+                >
+                  <button
+                    type="button"
+                    data-open-booking
+                    class="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold transition-colors cursor-pointer"
+                  >
+                    Or Pick a 10-Min Time Now
+                  </button>
+                  <button
+                    id="resetContactBtn"
+                    type="button"
+                    class="px-5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-semibold transition-colors cursor-pointer"
+                  >
+                    Send Another Note
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ==================== 9. CLEAN FOOTER ==================== -->
+    <footer class="bg-white border-t border-slate-200 py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div
+          class="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 pb-8 border-b border-slate-100"
+        >
+          <!-- Brand & Tagline -->
+          <div>
+            <a href="#" class="flex items-center gap-2.5">
+              <div
+                class="w-8 h-8 rounded-lg bg-slate-900 flex items-center justify-center"
+              >
+                <svg
+                  class="w-4 h-4 text-white"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <rect
+                    x="3"
+                    y="4"
+                    width="11"
+                    height="4.5"
+                    rx="2.25"
+                    fill="currentColor"
+                  />
+                  <rect
+                    x="3"
+                    y="10"
+                    width="18"
+                    height="4.5"
+                    rx="2.25"
+                    fill="#10B981"
+                  />
+                  <rect
+                    x="9"
+                    y="16"
+                    width="12"
+                    height="4.5"
+                    rx="2.25"
+                    fill="currentColor"
+                  />
+                </svg>
+              </div>
+              <span class="text-lg font-extrabold tracking-tight text-slate-900"
+                >Clear<span class="text-blue-600">Flow</span></span
+              >
+            </a>
+            <p class="text-sm text-slate-500 mt-2 max-w-xs">
+              One clear, fast, and affordable workflow built around how growing
+              teams actually work.
+            </p>
+          </div>
+
+          <!-- Quick Links -->
+          <nav
+            class="flex flex-wrap gap-x-6 gap-y-2 text-sm font-medium text-slate-600"
+            aria-label="Footer Navigation"
+          >
+            <a
+              href="#problem-solution"
+              class="hover:text-slate-900 transition-colors"
+              >Problem &amp; Solution</a
+            >
+            <a
+              href="#how-it-works"
+              class="hover:text-slate-900 transition-colors"
+              >How It Works</a
+            >
+            <a href="#features" class="hover:text-slate-900 transition-colors"
+              >Features</a
+            >
+            <a href="#pricing" class="hover:text-slate-900 transition-colors"
+              >Pricing</a
+            >
+            <a href="#contact" class="hover:text-slate-900 transition-colors"
+              >Contact</a
+            >
+          </nav>
+
+          <!-- Direct Email -->
+          <div class="text-sm">
+            <span
+              class="text-slate-400 block text-xs font-semibold uppercase tracking-wider mb-1"
+              >Questions?</span
+            >
+            <a
+              href="mailto:hello@clearflow.app"
+              class="font-semibold text-blue-600 hover:text-blue-700 transition-colors"
+            >
+              hello@clearflow.app
+            </a>
+          </div>
+        </div>
+
+        <div
+          class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400"
+        >
+          <p>
+            &copy; <span id="currentYear">2026</span> ClearFlow Inc. All rights
+            reserved.
+          </p>
+          <p>Transparent pricing • Dependable human support</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ==================== 8. INTERACTIVE "BOOK A 10-MIN WALKTHROUGH" MODAL ==================== -->
+    <div
+      id="bookingModal"
+      class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="bookingModalTitle"
+    >
+      <div
+        id="bookingModalBackdrop"
+        class="fixed inset-0"
+        aria-hidden="true"
+      ></div>
+
+      <div
+        class="relative z-10 w-full max-w-lg bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden animate-fade-slide max-h-[92vh] overflow-y-auto"
+      >
+        <!-- Modal Top Header -->
+        <div
+          class="flex items-center justify-between px-6 py-5 bg-slate-50 border-b border-slate-200/80"
+        >
+          <div>
+            <span
+              class="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full mb-1"
+            >
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+              Live 1-on-1 Demo • 10 Mins
+            </span>
+            <h3
+              id="bookingModalTitle"
+              class="text-xl font-extrabold text-slate-900"
+            >
+              Book a 10-Min Walkthrough
+            </h3>
+          </div>
+          <button
+            id="closeBookingModalBtn"
+            type="button"
+            aria-label="Close modal"
+            class="p-2 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-slate-200/70 transition-colors cursor-pointer"
+          >
+            <svg
+              class="w-5 h-5"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Modal Form Body -->
+        <div id="bookingFormState" class="p-6 space-y-5">
+          <p
+            id="bookingPlanBanner"
+            class="hidden text-xs font-semibold text-blue-700 bg-blue-50 border border-blue-200 rounded-xl px-3.5 py-2"
+          ></p>
+
+          <!-- Step 1: Pick a Day -->
+          <div>
+            <label
+              class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2.5"
+              >1. Choose a Day This Week</label
+            >
+            <div
+              id="daySelectorGrid"
+              class="grid grid-cols-2 sm:grid-cols-4 gap-2.5"
+            >
+              <!-- Populated dynamically with upcoming weekdays -->
+            </div>
+          </div>
+
+          <!-- Step 2: Pick a 10-Minute Slot -->
+          <div>
+            <label
+              class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2.5"
+              >2. Choose a 10-Min Time Slot</label
+            >
+            <div id="timeSelectorGrid" class="grid grid-cols-2 gap-2.5">
+              <button
+                type="button"
+                data-time-slot="10:00 AM"
+                class="time-slot-btn py-2.5 px-3 rounded-xl border border-slate-200 text-sm font-semibold text-slate-700 hover:border-blue-400 transition-all cursor-pointer"
+              >
+                10:00 AM
+              </button>
+              <button
+                type="button"
+                data-time-slot="11:30 AM"
+                class="time-slot-btn py-2.5 px-3 rounded-xl border border-slate-200 text-sm font-semibold text-slate-700 hover:border-blue-400 transition-all cursor-pointer"
+              >
+                11:30 AM
+              </button>
+              <button
+                type="button"
+                data-time-slot="2:00 PM"
+                class="time-slot-btn py-2.5 px-3 rounded-xl border border-slate-200 text-sm font-semibold text-slate-700 hover:border-blue-400 transition-all cursor-pointer"
+              >
+                2:00 PM
+              </button>
+              <button
+                type="button"
+                data-time-slot="4:00 PM"
+                class="time-slot-btn py-2.5 px-3 rounded-xl border border-slate-200 text-sm font-semibold text-slate-700 hover:border-blue-400 transition-all cursor-pointer"
+              >
+                4:00 PM
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 3: Enter Name & Email -->
+          <form id="bookingForm" class="space-y-4 pt-1" novalidate>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+              <div>
+                <label
+                  for="bookingName"
+                  class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5"
+                  >Your Name *</label
+                >
+                <input
+                  id="bookingName"
+                  type="text"
+                  required
+                  placeholder="Jordan Taylor"
+                  class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 outline-none text-sm text-slate-900"
+                />
+              </div>
+              <div>
+                <label
+                  for="bookingEmail"
+                  class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5"
+                  >Work Email *</label
+                >
+                <input
+                  id="bookingEmail"
+                  type="email"
+                  required
+                  placeholder="jordan@company.com"
+                  class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 outline-none text-sm text-slate-900"
+                />
+              </div>
+            </div>
+
+            <div
+              id="bookingError"
+              class="hidden rounded-xl bg-rose-50 border border-rose-200 px-3.5 py-2.5 text-xs font-semibold text-rose-700"
+            ></div>
+
+            <button
+              type="submit"
+              class="w-full py-3.5 px-5 rounded-xl bg-blue-600 hover:bg-blue-700 active:scale-[0.99] text-white font-semibold text-sm shadow-md shadow-blue-600/20 transition-all cursor-pointer"
+            >
+              Confirm 10-Min Walkthrough
+            </button>
+          </form>
+        </div>
+
+        <!-- Modal Instant Confirmation Screen -->
+        <div
+          id="bookingConfirmState"
+          class="hidden p-8 text-center space-y-5 animate-fade-slide"
+        >
+          <div
+            class="w-16 h-16 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto"
+          >
+            <svg
+              class="w-8 h-8"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+          </div>
+
+          <div>
+            <h4 class="text-2xl font-extrabold text-slate-900">
+              You're All Set!
+            </h4>
+            <p class="text-sm text-slate-600 mt-1.5">
+              Your 10-minute ClearFlow walkthrough is confirmed. We've sent a
+              calendar invite to
+              <span
+                id="confirmBookingEmail"
+                class="font-semibold text-slate-900"
+              ></span
+              >.
+            </p>
+          </div>
+
+          <div
+            class="bg-slate-50 border border-slate-200 rounded-2xl p-4 text-left space-y-2 text-sm"
+          >
+            <div class="flex justify-between">
+              <span class="text-slate-500">Attendee</span>
+              <span
+                id="confirmBookingName"
+                class="font-semibold text-slate-900"
+              ></span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-slate-500">Scheduled For</span>
+              <span
+                id="confirmBookingSlot"
+                class="font-bold text-blue-600"
+              ></span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-slate-500">Duration</span>
+              <span class="font-semibold text-emerald-600"
+                >10 Minutes (Focused Demo)</span
+              >
+            </div>
+          </div>
+
+          <button
+            id="doneBookingBtn"
+            type="button"
+            class="w-full py-3 px-5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-semibold text-sm transition-colors cursor-pointer"
+          >
+            Back to ClearFlow
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== INTERACTIVE APPLICATION LOGIC ==================== -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        try {
+          /* -----------------------------------------------------------
+           * 1. MOBILE MENU TOGGLE
+           * ----------------------------------------------------------- */
+          const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+          const mobileMenu = document.getElementById("mobileMenu");
+          const menuIconOpen = document.getElementById("menuIconOpen");
+          const menuIconClose = document.getElementById("menuIconClose");
+          const mobileNavLinks = document.querySelectorAll(".mobile-nav-link");
+
+          function setMobileMenuOpen(isOpen) {
+            if (!mobileMenu || !mobileMenuBtn) return;
+            mobileMenu.classList.toggle("hidden", !isOpen);
+            menuIconOpen.classList.toggle("hidden", isOpen);
+            menuIconClose.classList.toggle("hidden", !isOpen);
+            mobileMenuBtn.setAttribute("aria-expanded", String(isOpen));
+          }
+
+          if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener("click", () => {
+              const isCurrentlyHidden = mobileMenu.classList.contains("hidden");
+              setMobileMenuOpen(isCurrentlyHidden);
+            });
+          }
+
+          mobileNavLinks.forEach((link) => {
+            link.addEventListener("click", () => setMobileMenuOpen(false));
+          });
+
+          /* -----------------------------------------------------------
+           * 2. HERO BEFORE / AFTER WORKSPACE TOGGLE
+           * ----------------------------------------------------------- */
+          const btnBefore = document.getElementById("btnBefore");
+          const btnAfter = document.getElementById("btnAfter");
+          const viewBefore = document.getElementById("viewBefore");
+          const viewAfter = document.getElementById("viewAfter");
+
+          function switchWorkspaceView(mode) {
+            const isAfter = mode === "after";
+
+            viewAfter.classList.toggle("hidden", !isAfter);
+            viewBefore.classList.toggle("hidden", isAfter);
+
+            // Update active button classes
+            if (isAfter) {
+              btnAfter.className =
+                "px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-white text-blue-700 shadow-sm ring-1 ring-slate-200/80 transition-all cursor-pointer";
+              btnBefore.className =
+                "px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 transition-all cursor-pointer";
+              btnAfter.setAttribute("aria-selected", "true");
+              btnBefore.setAttribute("aria-selected", "false");
+            } else {
+              btnBefore.className =
+                "px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-white text-rose-700 shadow-sm ring-1 ring-rose-200 transition-all cursor-pointer";
+              btnAfter.className =
+                "px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 transition-all cursor-pointer";
+              btnBefore.setAttribute("aria-selected", "true");
+              btnAfter.setAttribute("aria-selected", "false");
+            }
+          }
+
+          if (btnBefore && btnAfter) {
+            btnBefore.addEventListener("click", () =>
+              switchWorkspaceView("before"),
+            );
+            btnAfter.addEventListener("click", () =>
+              switchWorkspaceView("after"),
+            );
+          }
+
+          /* -----------------------------------------------------------
+           * 3. TIME & COST SAVINGS ESTIMATOR
+           * ----------------------------------------------------------- */
+          const hoursSlider = document.getElementById("hoursSlider");
+          const rateSlider = document.getElementById("rateSlider");
+          const hoursValueDisplay =
+            document.getElementById("hoursValueDisplay");
+          const rateValueDisplay = document.getElementById("rateValueDisplay");
+          const estHoursSaved = document.getElementById("estHoursSaved");
+          const estMoneySaved = document.getElementById("estMoneySaved");
+          const estAnnualSaved = document.getElementById("estAnnualSaved");
+
+          function updateSavingsEstimator() {
+            const weeklyHoursLost = Number(hoursSlider.value) || 12;
+            const hourlyValue = Number(rateSlider.value) || 50;
+
+            // Update slider pill labels
+            hoursValueDisplay.textContent = `${weeklyHoursLost} hrs/wk`;
+            rateValueDisplay.textContent = `$${hourlyValue}/hr`;
+
+            // Calculations: 4.33 weeks/month, 60% delay reduction + $120/mo average tool consolidation savings
+            const monthlyHoursSaved = Math.round(weeklyHoursLost * 4.33 * 0.6);
+            const monthlyMoneySaved = Math.round(
+              monthlyHoursSaved * hourlyValue + 120,
+            );
+            const annualMoneySaved = monthlyMoneySaved * 12;
+
+            estHoursSaved.textContent = monthlyHoursSaved.toLocaleString();
+            estMoneySaved.textContent = `$${monthlyMoneySaved.toLocaleString()}`;
+            estAnnualSaved.textContent = `$${annualMoneySaved.toLocaleString()} / yr`;
+          }
+
+          if (hoursSlider && rateSlider) {
+            hoursSlider.addEventListener("input", updateSavingsEstimator);
+            rateSlider.addEventListener("input", updateSavingsEstimator);
+            updateSavingsEstimator();
+          }
+
+          /* -----------------------------------------------------------
+           * 4. PRICING MONTHLY / ANNUAL TOGGLE
+           * ----------------------------------------------------------- */
+          const billingMonthly = document.getElementById("billingMonthly");
+          const billingAnnual = document.getElementById("billingAnnual");
+          const starterPrice = document.getElementById("starterPrice");
+          const growthPrice = document.getElementById("growthPrice");
+          const starterNote = document.getElementById("starterNote");
+          const growthNote = document.getElementById("growthNote");
+
+          function setBillingMode(isAnnual) {
+            if (isAnnual) {
+              billingAnnual.className =
+                "px-4 py-2 rounded-lg text-sm font-semibold bg-white text-slate-900 shadow-sm transition-all flex items-center gap-1.5 cursor-pointer";
+              billingMonthly.className =
+                "px-4 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:text-slate-900 transition-all cursor-pointer";
+              starterPrice.textContent = "$23";
+              growthPrice.textContent = "$63";
+              starterNote.textContent =
+                "Billed annually ($276/yr) • Up to 5 team members included";
+              growthNote.textContent =
+                "Billed annually ($756/yr) • Up to 20 team members + unlimited clients";
+            } else {
+              billingMonthly.className =
+                "px-4 py-2 rounded-lg text-sm font-semibold bg-white text-slate-900 shadow-sm transition-all cursor-pointer";
+              billingAnnual.className =
+                "px-4 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:text-slate-900 transition-all flex items-center gap-1.5 cursor-pointer";
+              starterPrice.textContent = "$29";
+              growthPrice.textContent = "$79";
+              starterNote.textContent =
+                "Billed monthly • Up to 5 team members included";
+              growthNote.textContent =
+                "Billed monthly • Up to 20 team members + unlimited clients";
+            }
+          }
+
+          if (billingMonthly && billingAnnual) {
+            billingMonthly.addEventListener("click", () =>
+              setBillingMode(false),
+            );
+            billingAnnual.addEventListener("click", () => setBillingMode(true));
+          }
+
+          /* -----------------------------------------------------------
+           * 5. COPY EMAIL TO CLIPBOARD (iFrame-safe execCommand)
+           * ----------------------------------------------------------- */
+          const copyEmailBtn = document.getElementById("copyEmailBtn");
+          if (copyEmailBtn) {
+            copyEmailBtn.addEventListener("click", () => {
+              const tempInput = document.createElement("textarea");
+              tempInput.value = "hello@clearflow.app";
+              tempInput.setAttribute("readonly", "");
+              tempInput.style.position = "absolute";
+              tempInput.style.left = "-9999px";
+              document.body.appendChild(tempInput);
+              tempInput.select();
+              try {
+                document.execCommand("copy");
+                copyEmailBtn.textContent = "Copied!";
+                copyEmailBtn.classList.add("bg-emerald-600", "text-white");
+                setTimeout(() => {
+                  copyEmailBtn.textContent = "Copy";
+                  copyEmailBtn.classList.remove("bg-emerald-600", "text-white");
+                }, 2000);
+              } catch (err) {
+                copyEmailBtn.textContent = "hello@clearflow.app";
+              } finally {
+                document.body.removeChild(tempInput);
+              }
+            });
+          }
+
+          /* -----------------------------------------------------------
+           * 6. CONTACT FORM QUICK-TAGS & SUBMISSION
+           * ----------------------------------------------------------- */
+          const contactForm = document.getElementById("contactForm");
+          const contactFormContainer = document.getElementById(
+            "contactFormContainer",
+          );
+          const contactFormSuccess =
+            document.getElementById("contactFormSuccess");
+          const contactFormError = document.getElementById("contactFormError");
+          const contactBottleneck =
+            document.getElementById("contactBottleneck");
+          const resetContactBtn = document.getElementById("resetContactBtn");
+          const quickTagButtons = document.querySelectorAll("[data-quick-tag]");
+
+          quickTagButtons.forEach((btn) => {
+            btn.addEventListener("click", () => {
+              const tagText = btn.getAttribute("data-quick-tag");
+              if (!contactBottleneck) return;
+              const currentVal = contactBottleneck.value.trim();
+              if (!currentVal) {
+                contactBottleneck.value = tagText;
+              } else if (
+                !currentVal.toLowerCase().includes(tagText.toLowerCase())
+              ) {
+                contactBottleneck.value = `${currentVal}; ${tagText}`;
+              }
+              contactBottleneck.focus();
+            });
+          });
+
+          function isValidEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+          }
+
+          if (contactForm) {
+            contactForm.addEventListener("submit", (e) => {
+              e.preventDefault();
+              const nameVal = document
+                .getElementById("contactName")
+                .value.trim();
+              const emailVal = document
+                .getElementById("contactEmail")
+                .value.trim();
+              const bottleneckVal = contactBottleneck.value.trim();
+
+              if (!nameVal || !emailVal || !bottleneckVal) {
+                contactFormError.textContent =
+                  "Please fill out your name, work email, and workflow bottleneck.";
+                contactFormError.classList.remove("hidden");
+                return;
+              }
+              if (!isValidEmail(emailVal)) {
+                contactFormError.textContent =
+                  "Please enter a valid email address so we can reply.";
+                contactFormError.classList.remove("hidden");
+                return;
+              }
+
+              contactFormError.classList.add("hidden");
+              document.getElementById("confirmedContactName").textContent =
+                nameVal;
+              document.getElementById("confirmedContactEmail").textContent =
+                emailVal;
+
+              contactFormContainer.classList.add("hidden");
+              contactFormSuccess.classList.remove("hidden");
+            });
+          }
+
+          if (resetContactBtn) {
+            resetContactBtn.addEventListener("click", () => {
+              contactForm.reset();
+              contactFormSuccess.classList.add("hidden");
+              contactFormContainer.classList.remove("hidden");
+            });
+          }
+
+          /* -----------------------------------------------------------
+           * 7. INTERACTIVE "BOOK A 10-MIN WALKTHROUGH" MODAL
+           * ----------------------------------------------------------- */
+          const bookingModal = document.getElementById("bookingModal");
+          const bookingModalBackdrop = document.getElementById(
+            "bookingModalBackdrop",
+          );
+          const closeBookingModalBtn = document.getElementById(
+            "closeBookingModalBtn",
+          );
+          const doneBookingBtn = document.getElementById("doneBookingBtn");
+          const bookingFormState = document.getElementById("bookingFormState");
+          const bookingConfirmState = document.getElementById(
+            "bookingConfirmState",
+          );
+          const bookingForm = document.getElementById("bookingForm");
+          const bookingError = document.getElementById("bookingError");
+          const bookingPlanBanner =
+            document.getElementById("bookingPlanBanner");
+          const daySelectorGrid = document.getElementById("daySelectorGrid");
+          const timeSlotButtons = document.querySelectorAll(".time-slot-btn");
+          const openBookingTriggers = document.querySelectorAll(
+            "[data-open-booking]",
+          );
+
+          let selectedDayLabel = "";
+          let selectedTimeSlot = "10:00 AM";
+
+          // Build next 4 upcoming weekdays dynamically
+          function populateUpcomingDays() {
+            if (!daySelectorGrid) return;
+            daySelectorGrid.innerHTML = "";
+
+            const weekdayNames = [
+              "Sun",
+              "Mon",
+              "Tue",
+              "Wed",
+              "Thu",
+              "Fri",
+              "Sat",
+            ];
+            const monthNames = [
+              "Jan",
+              "Feb",
+              "Mar",
+              "Apr",
+              "May",
+              "Jun",
+              "Jul",
+              "Aug",
+              "Sep",
+              "Oct",
+              "Nov",
+              "Dec",
+            ];
+
+            const upcoming = [];
+            const cursor = new Date();
+            // Start from today or tomorrow if late, collect 4 business days
+            while (upcoming.length < 4) {
+              const dayIdx = cursor.getDay();
+              if (dayIdx !== 0 && dayIdx !== 6) {
+                const label = `${weekdayNames[dayIdx]}, ${monthNames[cursor.getMonth()]} ${cursor.getDate()}`;
+                upcoming.push({
+                  shortDay: weekdayNames[dayIdx],
+                  dateText: `${monthNames[cursor.getMonth()]} ${cursor.getDate()}`,
+                  fullLabel: label,
+                });
+              }
+              cursor.setDate(cursor.getDate() + 1);
+            }
+
+            upcoming.forEach((day, index) => {
+              const btn = document.createElement("button");
+              btn.type = "button";
+              btn.dataset.dayLabel = day.fullLabel;
+              btn.className =
+                "day-slot-btn flex flex-col items-center justify-center py-2.5 px-2 rounded-xl border text-center transition-all cursor-pointer";
+              btn.innerHTML = `
+              <span class="text-xs font-medium opacity-75">${day.shortDay}</span>
+              <span class="text-sm font-bold">${day.dateText}</span>
+            `;
+              btn.addEventListener("click", () =>
+                selectDayButton(day.fullLabel),
+              );
+              daySelectorGrid.appendChild(btn);
+
+              if (index === 0) {
+                selectedDayLabel = day.fullLabel;
+              }
+            });
+
+            selectDayButton(selectedDayLabel);
+          }
+
+          function selectDayButton(dayLabel) {
+            selectedDayLabel = dayLabel;
+            const allDayBtns =
+              daySelectorGrid.querySelectorAll(".day-slot-btn");
+            allDayBtns.forEach((btn) => {
+              const isSelected = btn.dataset.dayLabel === dayLabel;
+              if (isSelected) {
+                btn.className =
+                  "day-slot-btn flex flex-col items-center justify-center py-2.5 px-2 rounded-xl border-2 border-blue-600 bg-blue-50 text-blue-700 text-center transition-all cursor-pointer";
+              } else {
+                btn.className =
+                  "day-slot-btn flex flex-col items-center justify-center py-2.5 px-2 rounded-xl border border-slate-200 bg-white text-slate-700 hover:border-blue-300 text-center transition-all cursor-pointer";
+              }
+            });
+          }
+
+          function selectTimeSlot(timeValue) {
+            selectedTimeSlot = timeValue;
+            timeSlotButtons.forEach((btn) => {
+              const isSelected = btn.dataset.timeSlot === timeValue;
+              if (isSelected) {
+                btn.className =
+                  "time-slot-btn py-2.5 px-3 rounded-xl border-2 border-blue-600 bg-blue-50 text-blue-700 text-sm font-bold transition-all cursor-pointer";
+              } else {
+                btn.className =
+                  "time-slot-btn py-2.5 px-3 rounded-xl border border-slate-200 bg-white text-slate-700 hover:border-blue-300 text-sm font-semibold transition-all cursor-pointer";
+              }
+            });
+          }
+
+          timeSlotButtons.forEach((btn) => {
+            btn.addEventListener("click", () =>
+              selectTimeSlot(btn.dataset.timeSlot),
+            );
+          });
+
+          function openBookingModal(planName) {
+            setMobileMenuOpen(false);
+            bookingForm.reset();
+            bookingError.classList.add("hidden");
+            bookingFormState.classList.remove("hidden");
+            bookingConfirmState.classList.add("hidden");
+
+            if (planName) {
+              bookingPlanBanner.textContent = `Walkthrough focus: ClearFlow ${planName} Plan (transparent setup & workflow preview)`;
+              bookingPlanBanner.classList.remove("hidden");
+            } else {
+              bookingPlanBanner.classList.add("hidden");
+            }
+
+            populateUpcomingDays();
+            selectTimeSlot(selectedTimeSlot || "10:00 AM");
+
+            bookingModal.classList.remove("hidden");
+            bookingModal.classList.add("flex");
+            document.body.style.overflow = "hidden";
+          }
+
+          function closeBookingModal() {
+            bookingModal.classList.add("hidden");
+            bookingModal.classList.remove("flex");
+            document.body.style.overflow = "";
+          }
+
+          openBookingTriggers.forEach((trigger) => {
+            trigger.addEventListener("click", () => {
+              const plan = trigger.getAttribute("data-plan") || "";
+              openBookingModal(plan);
+            });
+          });
+
+          if (closeBookingModalBtn)
+            closeBookingModalBtn.addEventListener("click", closeBookingModal);
+          if (doneBookingBtn)
+            doneBookingBtn.addEventListener("click", closeBookingModal);
+          if (bookingModalBackdrop)
+            bookingModalBackdrop.addEventListener("click", closeBookingModal);
+
+          // Close modal on Escape key
+          document.addEventListener("keydown", (e) => {
+            if (
+              e.key === "Escape" &&
+              !bookingModal.classList.contains("hidden")
+            ) {
+              closeBookingModal();
+            }
+          });
+
+          // Handle Booking Submission
+          if (bookingForm) {
+            bookingForm.addEventListener("submit", (e) => {
+              e.preventDefault();
+              const nameVal = document
+                .getElementById("bookingName")
+                .value.trim();
+              const emailVal = document
+                .getElementById("bookingEmail")
+                .value.trim();
+
+              if (!nameVal || !emailVal) {
+                bookingError.textContent =
+                  "Please enter your name and work email to confirm.";
+                bookingError.classList.remove("hidden");
+                return;
+              }
+              if (!isValidEmail(emailVal)) {
+                bookingError.textContent =
+                  "Please enter a valid email address.";
+                bookingError.classList.remove("hidden");
+                return;
+              }
+
+              bookingError.classList.add("hidden");
+              document.getElementById("confirmBookingName").textContent =
+                nameVal;
+              document.getElementById("confirmBookingEmail").textContent =
+                emailVal;
+              document.getElementById("confirmBookingSlot").textContent =
+                `${selectedDayLabel} at ${selectedTimeSlot}`;
+
+              bookingFormState.classList.add("hidden");
+              bookingConfirmState.classList.remove("hidden");
+            });
+          }
+
+          /* -----------------------------------------------------------
+           * 8. FOOTER CURRENT YEAR
+           * ----------------------------------------------------------- */
+          const yearEl = document.getElementById("currentYear");
+          if (yearEl) {
+            yearEl.textContent = new Date().getFullYear();
+          }
+        } catch (error) {
+          console.error("ClearFlow UI initialization error:", error);
+        }
+      });
+    </script>
+  </body>
+</html>
